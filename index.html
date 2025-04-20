@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
   <title>CH Terra | Transportes Rodoviários</title>
   <script>
     function Orcamento(){
@@ -15,15 +16,31 @@
         var description = document.querySelector("#description").value;
         console.log(nome, email, contato,coleta, destino, description);
         if(nome === ''){
-            alert('preencha todos os campos');
+            alert('Preencha todos os campos');
         } else if (email === ''){
-            alert('preencha todos os campos');
+            alert('Preencha todos os campos');
         } else if(contato == '') {
-            alert('preencha todos os campos');
+            alert('Preencha todos os campos');
         }else if (contato.length < 11 || contato.length > 11) {
             alert('Forneça um número de Telefone Válido');
-        }
-        console.log(contato.length)
+        } else if(coleta === ''){
+            alert("Preencha todos os campos");
+        } else if(destino === ''){
+            alert("Preencha todos os campos");
+        } else if (description === ''){
+            alert("preencha todos os campos");
+        } else {
+            var msg = `
+            *Olá,* Vim através da sua página de vendas e gostaria de solicitar um orçamento. Seguem minhas informações:\n*Nome:*__ ${nome}\n*E-mail:*__ ${email}\n*Contato:* __ ${contato}\n*Endereço de coleta:* __ ${coleta}\n*Endereço de destino:* __ ${destino}\n*Descrição da carga:* __ ${description}\n
+            `;
+            
+            var msgEncoded = encodeURIComponent(msg);
+
+            var linkWhatsApp = "https://api.whatsapp.com/send?phone=5511932223533&text=" + msgEncoded;
+
+            // Abra o link em uma nova janela ou redirecione para ele
+            window.open(linkWhatsApp, '_blank');
+        }        
     }
   </script>
 </head>
@@ -38,7 +55,7 @@
                 <d>TRANSPORTE</d><br/>
                 <e>RAPIDO, SEGURO</e><br/> <f>E UMANIZADO.</f></h1>
             <p>A CH Terra é especializada em transporte rodoviário porta a porta, com foco em cargas de alto valor e alto risco.</p>
-            <button id="BtnPrimaty">Solicitar orçamento</button>
+            <button id="BtnPrimaty"> <a href="#f">Solicitar orçamento</a></button>
         </div>
         <video loop="loop" autoplay="" playsinline="" muted=""  preload="none" src="assets/0419(1).mp4"></video>
     </div>
@@ -111,7 +128,7 @@
             <d>experiência</d> no setor, somos <d><b>especialistas</b></d> em 
             criar rotas seguras e <d><b>personalizadas.</b></d>
         </p>
-        <button id="BtnPrimaty">Solicitar orçamento</button>
+        <button id="BtnPrimaty"><a href="#f">Solicitar orçamento</a></button>
         <br/><br/><br/><br/><br/><br/>
     </div>
 
@@ -130,7 +147,7 @@
                 </div>
             </div>
             <div id="logoBig">
-                <img src="assets/chterra.png" alt="Logo Big" />
+                <img src="assets/logobig.png" alt="Logo Big" />
             </div>
 
     
@@ -141,7 +158,10 @@
   
   <footer>
     <p>📧 contato@chterra.com.br | 📞 (11) 98165-1780<br>
-    📍 Rua João XXIII, 100 – Itapevi/SP | 🕗 Atendimento: 8h às 18h</p>
+    📍 Rua João XXIII, 100 – Itapevi/SP | 🕗 Atendimento: 8h às 18h<br/>
+    <a id="dev" href="https://www.instagram.com/cristatus.oficial/" target="_blank">Developd By Cristatus</a>
+    </p>
+
   </footer>
 
 </body>
