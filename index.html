@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>CH Terra | Transportes Rodoviários</title>
+  <script>
+    function Orcamento(){
+        var nome = document.querySelector("#nome").value;
+        var email = document.querySelector("#email").value;
+        var contato = document.querySelector("#contato").value;
+        var coleta = document.querySelector("#coleta").value;
+        var destino = document.querySelector("#destino ").value;
+        var description = document.querySelector("#description").value;
+        console.log(nome, email, contato,coleta, destino, description);
+        if(nome === ''){
+            alert('preencha todos os campos');
+        } else if (email === ''){
+            alert('preencha todos os campos');
+        } else if(contato == '') {
+            alert('preencha todos os campos');
+        }else if (contato.length < 11 || contato.length > 11) {
+            alert('Forneça um número de Telefone Válido');
+        }
+        console.log(contato.length)
+    }
+  </script>
+</head>
+<body>
+    <header>
+        <img src="assets/chterra.png" alt="logo chterre"/>
+      </header>
+  <section id="primari">
+    <div id="container">
+        <div id="containerPrimary">
+            <h1>
+                <d>TRANSPORTE</d><br/>
+                <e>RAPIDO, SEGURO</e><br/> <f>E UMANIZADO.</f></h1>
+            <p>A CH Terra é especializada em transporte rodoviário porta a porta, com foco em cargas de alto valor e alto risco.</p>
+            <button id="BtnPrimaty">Solicitar orçamento</button>
+        </div>
+        <video loop="loop" autoplay="" playsinline="" muted=""  preload="none" src="assets/0419(1).mp4"></video>
+    </div>
+  </section>
+  <div id="faixa"></div>
+  <section id="solucoes">
+    <h1>SOLUÇÕES <d>APRESENTADAS</d></h1>
+    <div class="soluAplicadas">
+        <div class="cardSolucao">
+            <p class="titleSolucao">
+                Modal porta a porta:
+            </p>
+            <p class="corpoSolucao">
+                Coleta e entrega diretamente na origem e destino, sem intermediários.
+            </p>
+        </div>
+        <div class="cardSolucao">
+            <p class="titleSolucao">
+                Gerenciamento completo da operação:
+            </p>
+            <p class="corpoSolucao">
+                Desde o planejamento de embarques, roteirização estratégica, até o pós- venda.
+            </p>
+        </div>
+        <div class="cardSolucao">
+            <p class="titleSolucao">
+                Seguro completo: 
+            </p>
+            <p class="corpoSolucao">
+                Cobertura contra roubo, furto e responsabilidade civil, sobre o valor total das mercadorias transportadas.
+            </p>
+        </div>        
+    </div>
+
+    <div class="soluAplicadas">
+        <div class="cardSolucao">
+            <p class="titleSolucao">
+                Equipe especializada: 
+
+            </p>
+            <p class="corpoSolucao">
+                Profissionais experientes e capacitados para atendimento full-time
+            </p>
+        </div>
+        <div class="cardSolucao">
+            <p class="titleSolucao">
+                Monitoramento em tempo real:
+            </p>
+            <p class="corpoSolucao">
+                Acompanhamento completo do trajeto com foco em diminuição de riscos.
+            </p>
+        </div>
+        <div class="cardSolucao">
+            <p class="titleSolucao">
+                Documentação e conformidade:
+            </p>
+            <p class="corpoSolucao">
+                Processamento de documentos de transporte conforme exigências legais.
+            </p>
+        </div>        
+    </div>
+
+    <div id="Servicos">
+        <h1 id="servicosh1">SOBRE O NOSSO SERVIÇO</h1>
+        <img id="roteiro" src="assets/roteiro.png" alt="roteiro"/>
+        <p id="textoSevicos">
+            Desde a <d>retirada</d> até a entrega final, 
+            a CH Terra <d>garante agilidade,</d> rastreabilidade, 
+            <d><b>seguro</b></d> e atendimento consultivo. Com anos de 
+            <d>experiência</d> no setor, somos <d><b>especialistas</b></d> em 
+            criar rotas seguras e <d><b>personalizadas.</b></d>
+        </p>
+        <button id="BtnPrimaty">Solicitar orçamento</button>
+        <br/><br/><br/><br/><br/><br/>
+    </div>
+
+    <section id="Formulario">
+        <h1>Solictar orçamento</h1>
+        <div id="containerForm">
+            <div id="Form">
+                <div id="f">
+                    <input id="nome" placeholder="Nome Completo" type="text"/>
+                    <input id="email" placeholder="E-mail" type="email"/>
+                    <input id="contato" placeholder="Contato" type="number"/>
+                    <input id="coleta" placeholder="Local de coleta" type="text"/>
+                    <input id="destino" placeholder="Local de destino" type="text"/>
+                    <textarea id="description" placeholder="Descreva a carga" id="mensagem" name="mensagem" rows="3" cols="30"></textarea>
+                    <button onclick="Orcamento()"  id="submit">Solicitar</button>
+                </div>
+            </div>
+            <div id="logoBig">
+                <img src="assets/chterra.png" alt="Logo Big" />
+            </div>
+
+    
+        </div>
+      </section>
+
+  </section>
+  
+  <footer>
+    <p>📧 contato@chterra.com.br | 📞 (11) 98165-1780<br>
+    📍 Rua João XXIII, 100 – Itapevi/SP | 🕗 Atendimento: 8h às 18h</p>
+  </footer>
+
+</body>
+</html>
