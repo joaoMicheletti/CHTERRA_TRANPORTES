@@ -6,7 +6,7 @@
 }
 a {
   text-decoration: none;
-  color: black;
+  color: rgba(59, 56, 56, 0.671);
 }
 
 * {
@@ -18,7 +18,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    background-color: #f9f9f9;
+    background-color: #000000;
     color: #333;
   }
   header {
@@ -56,7 +56,7 @@ body {
     font-family: "Horizon";
     color: white;
     font-size: 45px;
-    line-height: 55px;
+    line-height: 40px;
   }
   d {
     color: #f39b1f;
@@ -66,7 +66,7 @@ body {
     font-weight: 900;
   }
   #containerPrimary p {
-    line-height: 30px;
+    line-height: 28px;
     font-size: 30px;
     color: #f39b1f;
     font-weight: 600;
@@ -74,7 +74,7 @@ body {
   }
   #BtnPrimaty {
     font-family: "Horizon";
-    color: rgb(20, 19, 19);
+    color: rgb(8, 8, 8);
     font-size: 15px;
     cursor: pointer;
     width: 50%;
@@ -95,49 +95,189 @@ body {
     height: 20px;
     background-color: #f39b1f;
   }
+
   #solucoes {
+    padding-top: 80px;
     width: 100%;
     height: auto;
-    background-image: url(assets/bgo2.png);
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }#solucoes h1 {
-    padding-top: 90px;
-    margin-bottom: 50px;
-    text-align: center;
-    font-family: "Horizon";
-    color: white;
   }
-  
-
-
-  .soluAplicadas{
-    width: 80%;
-    margin-left: 10%;
-    padding-bottom: 40px;
+  #containerxp {
+    width: 90%;
+    margin-left: 5%;
     display: flex;
     flex-direction: row;
+    margin-top: 100px;
+    margin-bottom: 200px;
+  }
+  #xpimg {
+    width: 50%;
+  } #xpimg img {
+    width: 100%;
+  }
+  #TXTEXP {
+    margin-left: 10%;
+    width: 40%;
+    font-family: "Montserrat";
+    font-weight: 600;
+    color: white;
+  }
+
+y {
+  color: #f39b1f;
+}
+@media(max-width: 800px){
+  #containerxp {
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    margin-bottom: 200px;
+  }
+  #xpimg {
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 30px;
+  } #xpimg img {
+    width: 100%;
+  }
+  #TXTEXP {
+    margin-left: 10%;
+    width: 80%;
+    font-family: "Montserrat";
+    font-weight: 600;
+    color: white;
+  }
+}
+
+
+  #ContainerSolucoes{
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 80px;
+  }
+  #cardUnico {
+    width: 50%;
+  }
+  .imgunica {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 40%;
+    margin-left: 30%;
+  }
+  #tituloUnico {
+    font-family: "Horizon";
+    font-size: 40px;
+    color: #f39b1f;
+    line-height: 35px;
+  }#corpoUnico {
+    font-family: "Montserrat";
+    color: rgb(252, 251, 251);
+    font-size: 18px;
+    font-weight: 400;
+  }
+  #solucoesapresentadas{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
     justify-content: space-around;
   }
-  .cardSolucao {
-    width: 30%;
-    background-color: transparent;
-    text-align: center;
-    padding: 30px;
-    border-radius: 10px;
+  .divCards {
+    margin-left: 5%;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
-  .titleSolucao{
+  .card {
+    background: radial-gradient(circle, #f39b1f 0%, #fee0bc 100%, #ffc47b 100%);
+    padding: 20px;
+    width: 40%;
+    border-radius: 5px;
+  }
+  .cardTitulo {
     font-family: "Horizon";
-    color: #f39b1f;
-    font-size: 15px;
-    text-align: left;
-  }.corpoSolucao {
-    color: white;
-    font-family: "Montserrat";
-    font-size: 18px;
-    text-align: left;
+    color: black;
+    font-size: 10px;
+    line-height: 15px;
   }
+  .cardCorpo {
+    margin-top: 10px;
+    line-height: 15px;
+    font-weight: 500;
+    color: black;
+    font-family: "Montserrat";
+  }
+  
+  @media(max-width: 800px){
+    #ContainerSolucoes{
+      width: 90%;
+      margin-left: 5%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-bottom: 80px;
+    }
+    #cardUnico {
+      width: 90%;
+      margin-left: 5%;
+      padding-bottom: 50px;
+    }.imgunica{
+      margin-top: 10px;
+      margin-left: 25%;
+      width: 50%;
+    }
+    #tituloUnico {
+      font-family: "Horizon";
+      font-size: 40px;
+      color: #f39b1f;
+    }#corpoUnico {
+      font-family: "Montserrat";
+      font-size: 18px;
+      font-weight: 400;
+    }
+    #solucoesapresentadas{
+      padding-top: 20px;
+      width: 90%;
+      margin-left: 5%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+    .divCards {
+      margin-left: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .card {
+      background: radial-gradient(circle, #f39b1f 0%, #fee0bc 100%, #ffc47b 100%);
+      padding: 20px;
+      width: 45%;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    .cardTitulo {
+      font-family: "Horizon";
+      color: black;
+      font-size: 9px;
+      line-height: 15px;
+    }
+    .cardCorpo {
+      margin-top: 10px;
+      line-height: 15px;
+      color: black;
+      font-family: "Montserrat";
+      font-size: 10px;
+    }
+
+  }
+
+
 
   
   #Servicos {
@@ -151,6 +291,7 @@ body {
   }
   #servicosh1 {
     font-size: 30px;
+    margin-bottom: 80px;
   }
   #roteiro{
     width: 80%;
@@ -159,6 +300,76 @@ body {
     padding: 30px;
   }
   
+
+
+
+  h2 {
+    font-family: "Horizon";
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 80px;
+    color: white;
+  }
+  #depoimentos {
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-bottom: 100px;
+  }
+  .depcard{
+    background-color: #3d3d3c13;
+    width: 30%;
+    border-radius: 5px;
+  }.imgDepCard {
+    width: 100%;
+  }.imgDepCard img {
+    width: 100%;
+    border-radius: 5px 5px;
+  }.corpoCardDep {
+    padding: 10px;
+    font-family: "Montserrat";
+    color: #fffdfd;
+    font-weight: 600;
+  }
+  #duvida {
+    margin-left: 10%;
+    width: 80%;
+    font-family: "Montserrat";
+    color: white;
+    line-height: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 50px;
+  }
+
+@media(max-width: 800px){
+  #depoimentos {
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-bottom: 150px;
+  }
+  .depcard{
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 5px;
+    margin-bottom: 30px;
+  }.imgDepCard {
+    width: 100%;
+  }.imgDepCard img {
+    width: 100%;
+    border-radius: 5px 5px;
+  }
+}
+
 
 #Formulario {
     width: 100%;
@@ -185,8 +396,6 @@ body {
     background-color: #33333336;
 }
 #mensagem {
-    width: 80%;
-    height: 50px;
     border: solid 1px gold;
     border-radius: 5px;
     background-color: #33333336;
@@ -254,7 +463,7 @@ body {
     font-weight: 900;
   }
   #containerPrimary p {
-    line-height: 20px;
+    line-height: 15px;
     font-size: 15px;
     color: #f39b1f;
     font-weight: 600;
@@ -279,9 +488,6 @@ body {
   #solucoes {
     width: 100%;
     height: auto;
-    background-image: url(assets/bgo2.png);
-    background-position: center center;
-    background-size: cover;
     background-repeat: no-repeat;
   }#solucoes h1 {
     padding-top: 40px;
@@ -366,8 +572,6 @@ body {
       background-color: #33333336;
   }
   #mensagem {
-      width: 80%;
-      height: 50px;
       border: solid 1px gold;
       border-radius: 5px;
       background-color: #33333336;
