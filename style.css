@@ -594,24 +594,56 @@ y {
       opacity: 80%;
   }
 }
-  #dev {
-    text-decoration: none;
-    color: white;
-    font-family: "Horizon";
+footer {
+  background: #f39b1f;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+#SocialRede  {
+  margin-top: 10px;
+}
+#developer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+#developer p {
+  margin-top: 20px;
+  padding: 10px;
+}
+#logoDEveloper {
+  width: 50px;
+}#Indereço  {
+  font-family: "Montserrat";
+  padding: 20px;
+}
+.pFooter{
+  font-family: "Montserrat";
+}
+footer  a {
+  margin-top: 10px;
+  color: rgb(255, 255, 255);
+  font-family: "Horizon";
+  text-decoration: none;
+}
+@media(max-width: 800px){
+  footer{
+      flex-direction: column;
   }
-  footer {
-    background: #f39b1f;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    font-size: 14px;
+  #SocialRede {
+      width: 90%;
+      margin-left: 5%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      margin-bottom: 10px;
+  }#developer {
+      width: 50%;
+      margin-left: 25%;
   }
-
-  @media(max-width: 800px){
-    footer {
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-      font-size: 10px;
-    }
-  }
+}
