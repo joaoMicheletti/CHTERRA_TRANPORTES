@@ -165,8 +165,8 @@ y {
   .imgunica {
     margin-top: 10px;
     margin-bottom: 20px;
-    width: 80%;
-    margin-left: 10%;
+    width: 50%;
+    border-radius: 20px;
   }
   #tituloUnico {
     font-family: "Horizon";
@@ -377,28 +377,28 @@ y {
 #containerForm {
     width: 90%;
     margin-left: 5%;
-    display: flex;
-    flex-direction: row;
 }
 #Form{
-    width: 50%;
+  margin-left: 10%;
+    width: 80%;
 }
 #f {
     display: flex;
     flex-direction: column;
 }#f input {
-    color: white;
+    border: none;
+    margin-left: 10%;
     width: 80%;
     height: 40px;
     margin-bottom: 10px;
     border-radius: 5px;
-    border: solid 1px gold;
-    background-color: #33333336;
+    background-color: #fafafa;
 }
 #mensagem {
-    border: solid 1px gold;
+    width: 80%;
+    margin-left: 10%;
     border-radius: 5px;
-    background-color: #33333336;
+    background-color: #fafafa;
     margin-bottom: 12px;
 }
 #submit{
@@ -406,7 +406,8 @@ y {
     color: black;
     font-family: "Horizon";
     width: 80%;
-    height: 40px;
+    margin-left: 10%;
+    height: 50px;
     border-radius: 5px;
     border: solid 1px gold;
     margin-bottom: 50px;
@@ -417,9 +418,11 @@ y {
 }
 #logoBig {
   text-align: center;
-  width: 50%;
+  width: 80%;
+  margin-left: 10%;
 }#logoBig img {
-  width: 40%;
+  width: 30%;
+  margin-bottom: 30px;
 }
 
 @media(max-width:800px){
@@ -551,9 +554,6 @@ y {
       margin-left: 5%;
       display: flex;
   }
-  #logoBig {
-    display: none;
-  }
   #Form{
       width: 90%;
       margin-left: 5%;
@@ -572,9 +572,7 @@ y {
       background-color: #33333336;
   }
   #mensagem {
-      border: solid 1px gold;
       border-radius: 5px;
-      background-color: #33333336;
       margin-bottom: 20px;
   }
   #submit{
