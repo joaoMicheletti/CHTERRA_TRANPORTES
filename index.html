@@ -3,261 +3,721 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
   <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
   <title>CH Terra | Transportes Rodoviários</title>
-  <script>
-    function Orcamento(){
-        var nome = document.querySelector("#nome").value;
-        var email = document.querySelector("#email").value;
-        var contato = document.querySelector("#contato").value;
-        var coleta = document.querySelector("#coleta").value;
-        var destino = document.querySelector("#destino ").value;
-        var description = document.querySelector("#description").value;
-        console.log(nome, email, contato,coleta, destino, description);
-        if(nome === ''){
-            alert('Preencha todos os campos');
-        } else if (email === ''){
-            alert('Preencha todos os campos');
-        } else if(contato == '') {
-            alert('Preencha todos os campos');
-        }else if (contato.length < 11 || contato.length > 11) {
-            alert('Forneça um número de Telefone Válido');
-        } else if(coleta === ''){
-            alert("Preencha todos os campos");
-        } else if(destino === ''){
-            alert("Preencha todos os campos");
-        } else if (description === ''){
-            alert("preencha todos os campos");
-        } else {
-            var msg = `
-            *Olá,* Vim através da sua página de vendas e gostaria de solicitar um orçamento. Seguem minhas informações:\n*Nome:*__ ${nome}\n*E-mail:*__ ${email}\n*Contato:* __ ${contato}\n*Endereço de coleta:* __ ${coleta}\n*Endereço de destino:* __ ${destino}\n*Descrição da carga:* __ ${description}\n
-            `;
-            
-            var msgEncoded = encodeURIComponent(msg);
-
-            var linkWhatsApp = "https://api.whatsapp.com/send?phone=5511932223533&text=" + msgEncoded;
-
-            // Abra o link em uma nova janela ou redirecione para ele
-            window.open(linkWhatsApp, '_blank');
-        }        
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    
+    @font-face {
+      font-family: 'Horizon';
+      src: url(fonts/Horizon-updated/t/horizon.otf) format('truetype');
     }
-  </script>
+    
+    :root {
+      --primary: #f28b0c;
+      --secondary: #cb4017;
+      --dark: #1a1a1a;
+      --light: #f8f8f8;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--dark);
+      color: var(--light);
+       background-image: url('./assets/bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+      overflow-x: hidden;
+    }
+    
+    
+    .font-horizon {
+      font-family: 'Horizon-updated', sans-serif;
+    }
+    
+    .gradient-text {
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    
+    .gradient-bg {
+      background: linear-gradient(90deg, rgba(203, 64, 23, 0.2), rgba(242, 139, 12, 0.2));
+      border: 1px solid rgba(242, 139, 12, 0.3);
+    }
+    
+    .btn-gradient {
+      background: linear-gradient(180deg, #cb4017, #f28b0c);
+      transition: all 0.3s ease;
+    }
+    
+    .btn-gradient:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(242, 139, 12, 0.3);
+    }
+    
+    /* Hero Section */
+    #hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+    
+    #hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 10%;
+      background: rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Modal Porta a Porta */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .modal-content {
+      background: var(--dark);
+      border-radius: 10px;
+      width: 90%;
+      max-width: 800px;
+      padding: 30px;
+      position: relative;
+      transform: translateY(50px);
+      transition: all 0.3s ease;
+    }
+    
+    .modal-overlay.active .modal-content {
+      transform: translateY(0);
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--primary);
+    }
+    
+    /* Cards */
+    .service-card {
+      
+      background: linear-gradient(180deg, #cb4017, #f28b0c);
+      transition: all 0.3s ease;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(242, 139, 12, 0.2);
+    }
+    
+    .card-image {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+    }
+    
+    /* FAQ */
+    .faq-item {
+      transition: all 0.3s ease;
+      background: linear-gradient(180deg, #cb4017, #f28b0c);
+    }
+    
+    
+    .faq-item .icon {
+      transition: transform 0.3s ease;
+    }
+    
+    .faq-item.active .icon {
+      transform: rotate(180deg);
+    }
+    
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    
+    .faq-item.active .faq-content {
+      max-height: 500px;
+    }
+    
+    /* Testimonials */
+    .testimonial-card {
+      transition: all 0.3s ease;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .testimonial-image {
+      height: 250px;
+      width: 100%;
+      object-fit: cover;
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideUp {
+      from { 
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .animate-fade-in {
+      animation: fadeIn 1s ease forwards;
+    }
+    
+    .animate-slide-up {
+      animation: slideUp 0.8s ease forwards;
+    }
+    
+    .delay-100 {
+      animation-delay: 0.1s;
+    }
+    
+    .delay-200 {
+      animation-delay: 0.2s;
+    }
+    
+    .delay-300 {
+      animation-delay: 0.3s;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .hero-content {
+        padding: 0 5%;
+      }
+      
+      .hero-title {
+        font-size: 2rem !important;
+        line-height: 2.2rem !important;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem !important;
+      }
+      
+      .testimonial-image {
+        height: 180px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <img src="assets/chterra.webp" alt="logo chterre"/>
-      </header>
-  <section id="primari">
-    <div id="container">
-        <div id="containerPrimary">
-            <h1>
-                <d>TRANSPORTE</d><br/>
-                <e>RAPIDO, SEGURO</e><br/> <f>E UMANIZADO.</f></h1>
-            <p>A CH Terra é especializada em transporte rodoviário porta a porta, com foco em cargas de alto valor e alto risco.</p>
-            <button id="BtnPrimaty"> <a href="#f">Solicitar orçamento</a></button>
-        </div>
-        <video loop="loop" autoplay="" playsinline="" muted=""  preload="none" src="assets/0419(1).mp4"></video>
+  <!-- Hero Section -->
+  <section id="hero">
+    <video loop autoplay muted playsinline preload="none" src="assets/definitivo.mp4"></video>
+    <div class="hero-content">
+      <h1 class="hero-title font-horizon text-5xl md:text-6xl lg:text-7xl text-white mb-4 animate-fade-in">
+        <span class="gradient-text">TRANSPORTE</span><br>
+        <span class="text-white">RÁPIDO, SEGURO</span><br>
+        <span class="text-white">E HUMANIZADO.</span>
+      </h1>
+      <p class="hero-subtitle text-xl md:text-2xl text-orange-400 font-semibold mb-8 animate-fade-in delay-100">
+        A CH Terra é especializada em transporte rodoviário porta a porta, com foco em cargas de alto valor e alto risco.
+      </p>
+      <button class="btn-gradient text-black font-horizon px-8 py-3 rounded-lg text-lg w-full md:w-auto animate-fade-in delay-200">
+        <a href="#form">Solicitar orçamento</a>
+      </button>
     </div>
   </section>
-
-
-  <div id="faixa"></div>
-
-
-
-
-  <section id="solucoes">
-    <div id="containerxp">
-        <div id="xpimg">
-            <img src="assets/slogan.webp" alt="texto decorativo">
-        </div>
-        <div id="TXTEXP">
-            <p id="pxp">
-                Na nossa operação, cada detalhe é <y>personalizado.</y> 
-                Oferecemos alinhamento <y>estratégico</y> de prazos, rotas e 
-                condições, com coleta e entrega <y>porta a porta</y>, garantindo 
-                agilidade e praticidade para o seu negócio. Nosso 
-                atendimento é próximo e humanizado, acompanhando 
-                você em todas as etapas.
-                Tudo isso com um <y>planejamento</y> eficiente e <y>monitoramento 
-                em tempo real</y>, do início ao fim da jornada da sua carga. 
-                O <y>resultado?</y> Mais tranquilidade e mais tempo <y>livre</y> para você 
-                focar no que realmente <y>importa</y>.
-            </p>
-            <button id="BtnPrimaty"> <a href="#f">Solicitar orçamento</a></button>
-        </div>
-    </div>
-
-
-
-
-
-    <div id="ContainerSolucoes">
-        <div id="cardUnico">
-            <img class="imgunica" src="assets/porta.webp" alt="imgilustyrativa porta a porta"/>
-            <p id="tituloUnico">Modal porta a porta</p>
-            <p id="corpoUnico">
-                Com o modal porta a porta, a entrega é direta e sem complicações. 
-                Coletamos sua carga na origem e a levamos até o destino final sem 
-                intermediários, garantindo mais agilidade, segurança e controle sobre 
-                cada etapa do transporte. Uma solução sob medida para quem busca 
-                eficiência e tranquilidade em cada envio. 
-
-            </p>
-
-        </div>
-        <div id="solucoesapresentadas">
-            <div class="divCards">
-                <div class="card">
-                    
-                    <p class="cardTitulo">Seguro completo</p>
-                    <p class="cardCorpo">
-                          Cobertura contra roubo, furto 
-                        e responsabilidade civil, 
-                        sobre o valor total das mercadorias transportadas.
-                    </p>
-                </div>
-                <div class="card">
-                    
-                    <p class="cardTitulo">Monitoramento em tempo real </p>
-                    <p class="cardCorpo">
-                        Acompanhamento completo do 
-                        trajeto com foco em diminuição de riscos.</p>
-                </div>
-            </div>
-
-            <div class="divCards">
-                <div class="card">
-                    
-                    <p class="cardTitulo">Gerenciamento <br/>completo da operação</p>
-                    <p class="cardCorpo">
-                        Desde o planejamento de embarques, 
-                        roteirização estratégica, até o pós- venda.
-                    </p>
-                </div>
-                <div class="card">
-                    
-                    <p class="cardTitulo">Equipe especializada</p>
-                    <p class="cardCorpo">
-                        
-                        Profissionais experientes e capacitados para atendimento full-time
-                    </p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div id="Servicos">
-        <h1 id="servicosh1">SOBRE O NOSSO SERVIÇO</h1>
-        <img id="roteiro" src="assets/roteiro.webp" alt="roteiro"/>
-        <p id="textoSevicos">
-            Desde a <d>retirada</d> até a entrega final, 
-            a CH Terra <d>garante agilidade,</d> rastreabilidade, 
-            <d><b>seguro</b></d> e atendimento consultivo. Com anos de 
-            <d>experiência</d> no setor, somos <d><b>especialistas</b></d> em 
-            criar rotas seguras e <d><b>personalizadas.</b></d>
+  
+  <!-- Divider -->
+  <div class="h-4 w-full bg-gradient-to-r from-orange-700 to-yellow-600"></div>
+  
+  <!-- About Section -->
+  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-90">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center">
+      <div class="w-full lg:w-1/2 mb-10 lg:mb-0 animate-slide-up">
+        <img src="assets/slogan.webp" alt="Texto decorativo" class="rounded-lg shadow-xl w-full">
+      </div>
+      <div class="w-full lg:w-1/2 lg:pl-16 animate-slide-up delay-100">
+        <p class="text-lg md:text-xl text-white mb-8">
+          Oferecemos alinhamento <span class="text-orange-400 font-semibold">estratégico</span> de prazos, rotas e 
+          condições, com coleta e entrega <span class="text-orange-400 font-semibold">porta a porta</span>, garantindo 
+          agilidade e praticidade para o seu negócio. Nosso 
+          atendimento é próximo e humanizado, acompanhando 
+          você em todas as etapas.<br><br>
+          Tudo isso com um <span class="text-orange-400 font-semibold">planejamento</span> eficiente e <span class="text-orange-400 font-semibold">monitoramento 
+          em tempo real</span>, do início ao fim da jornada da sua carga. 
+          O <span class="text-orange-400 font-semibold">resultado?</span> Mais tranquilidade e mais tempo <span class="text-orange-400 font-semibold">livre</span> para você 
+          focar no que realmente <span class="text-orange-400 font-semibold">importa</span>.
         </p>
-        <button id="BtnPrimaty"><a href="#f">Solicitar orçamento</a></button>
-        <br/><br/><br/><br/><br/><br/>
+        <button class="btn-gradient text-black font-horizon px-8 py-3 rounded-lg text-lg w-full md:w-auto mt-6">
+          <a href="#form">Solicitar orçamento</a>
+        </button>
+      </div>
     </div>
-
-
-<h2>Veja a opinião de nossos clientes</h2>
-    <div id="depoimentos">
-        <div class="depcard">
-            <div class="imgDepCard">
-                <img src="assets/piramidal.webp" alt="img de usuario de depoimento"/>
-            </div>
-            <p class="corpoCardDep">
-                Desde que comecei a utilizar os serviços da empresa, 
-                minhas entregas passaram a ser muito mais ágeis e 
-                organizadas. O atendimento é impecável e o acompanhamento 
-                em tempo real traz uma segurança que eu nunca 
-                tive com outras transportadoras.
-            </p>
-        </div>
-        <div class="depcard">
-            <div class="imgDepCard">
-                <img src="assets/download.webp" alt="img de usuario de depoimento"/>
-            </div>
-            <p class="corpoCardDep">
-                O que mais me impressionou foi a pontualidade 
-                e o cuidado com a carga. Além disso, o suporte 
-                é sempre muito atencioso e disposto a ajudar. 
-                Sem dúvidas, se tornou minha transportadora de confiança.
-            </p>
-        </div>
-        <div class="depcard">
-            <div class="imgDepCard">
-                <img src="assets/entec (2).webp" alt="img de usuario de depoimento"/>
-            </div>
-            <p class="corpoCardDep">
-                Com a entrega porta a porta e o alinhamento 
-                personalizado das rotas, conseguimos otimizar 
-                nossas operações e reduzir custos. É uma 
-                parceria que agrega valor real ao nosso negócio.
-            </p>
-        </div>
-
-    </div>
-    <div id="logoBig">
-        <img src="assets/logobig.webp" alt="Logo Big" />
-    </div>
-    <p id="duvida">
-        <y>Depois</y> de tantos <y>elogios</y>, ainda restam <y>dúvidas</y> 
-        sobre a <y>qualidade</y> do nosso serviço?
-        Estamos <y>prontos</y> para oferecer a mesma 
-        <y>excelência</y> para você e sua <y>empresa.</y> Conte com um time 
-        <y>comprometido</y>, ágil e próximo em todas as etapas do <y>transporte.</y>
-
-        Preencha o <y>formulário</y> e descubra como podemos 
-        <y>transformar</y> sua logística em uma <y>experiência</y> 
-        segura e eficiente.
-    </p>
-
-
-
-
-
-    <section id="Formulario">
-        <div id="containerForm">
-            <div id="Form">
-                <div id="f">
-                    <input id="nome" placeholder="  Nome Completo" type="text"/>
-                    <input id="email" placeholder="  E-mail" type="email"/>
-                    <input id="contato" placeholder="  Contato" type="number"/>
-                    <input id="coleta" placeholder="  Local de coleta" type="text"/>
-                    <input id="destino" placeholder="  Local de destino" type="text"/>
-                    <textarea
-                        placeholder="   Descreva a carga" 
-                        id="mensagem" name="mensagem" rows="5" cols="1">
-                    </textarea>
-
-                    <button onclick="Orcamento()"  id="submit">Solicitar</button>
-                </div>
-            </div>
-        </div>
-    </section>
   </section>
-  <footer>
-    <div id="SocialRede">
-        <a  target="_blank" href="https://www.instagram.com/ch.terra/"><img src="assets/insta.png" alt="logo instagram"/></a>
-        <a target="_blank" href="https://wa.me/5511981651780?text=vim%20atrav%C3%A9s%20da%20sua%20p%C3%A1gina%20de%20loca%C3%A7%C3%A3o%20de%20m%C3%A1quinas%20queria%20mais%20informa%C3%A7%C3%B5es%20a%20respeito
-        "><img src="assets/wh.png" alt="logo whatsapp"/></a>
-        <a href=""><img src="assets/lk.png" alt="logo linkedin"/></a>
-    </div>
-    <div id="Indereço">
-        <p class="pFooter">CHTERRA - Todos os direitos reservado</p>
-    </div>  
-    <div id="developer">
-        <p>Desenvolvido pela:</p>
-        <a href="https://www.instagram.com/cristatus.oficial/"><img id="logoDEveloper" src="assets/Logo.webp" alt="logoCristatus"/></a>
-    </div>
-       
-</footer>
   
+  <!-- Services Section -->
+  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-80">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row">
+      <!-- Modal Porta a Porta -->
+      <div class="w-full lg:w-1/2 mb-16 lg:mb-0 lg:pr-8 animate-slide-up">
+        <div class="service-card cursor-pointer" onclick="openModal()">
+          <img src="https://images.unsplash.com/photo-1601584115197-04e5f451267a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+               alt="Modal Porta a Porta" 
+               class="card-image rounded-t-lg">
+          <div class="gradient-bg p-6 rounded-b-lg">
+            <h3 class="font-horizon text-3xl text-orange-400 mb-4">Modal porta a porta</h3>
+            <p class="text-white">
+              Com o modal porta a porta, a entrega é direta e sem complicações. 
+              Coletamos sua carga na origem e a levamos até o destino final sem 
+              intermediários, garantindo mais agilidade, segurança e controle sobre 
+              cada etapa do transporte. Uma solução sob medida para quem busca 
+              eficiência e tranquilidade em cada envio.
+            </p>
+            <button class="text-orange-400 font-semibold mt-4 flex items-center">
+              Saiba mais <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Services Cards -->
+      <div class="w-full lg:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-6 animate-slide-up delay-100">
+        <!-- Card 1 -->
+        <div class="service-card">
+          <img src="https://images.unsplash.com/photo-1532635241-17e820acc59f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1415&q=80" 
+               alt="Seguro completo" 
+               class="card-image rounded-t-lg">
+          <div class="gradient-bg p-4 rounded-b-lg">
+            <h4 class="font-horizon text-xl text-black mb-2">Seguro completo</h4>
+            <p class="text-black text-sm">
+              Cobertura contra roubo, furto e responsabilidade civil, sobre o valor total das mercadorias transportadas.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Card 2 -->
+        <div class="service-card">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+               alt="Monitoramento em tempo real" 
+               class="card-image rounded-t-lg">
+          <div class="gradient-bg p-4 rounded-b-lg">
+            <h4 class="font-horizon text-xl text-black mb-2">Monitoramento em tempo real</h4>
+            <p class="text-black text-sm">
+              Acompanhamento completo do trajeto com foco em diminuição de riscos.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Card 3 -->
+        <div class="service-card">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+               alt="Gerenciamento completo" 
+               class="card-image rounded-t-lg">
+          <div class="gradient-bg p-4 rounded-b-lg">
+            <h4 class="font-horizon text-xl text-black mb-2">Gerenciamento completo</h4>
+            <p class="text-black text-sm">
+              Desde o planejamento de embarques, roteirização estratégica, até o pós-venda.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Card 4 -->
+        <div class="service-card">
+          <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" 
+               alt="Equipe especializada" 
+               class="card-image rounded-t-lg">
+          <div class="gradient-bg p-4 rounded-b-lg">
+            <h4 class="font-horizon text-xl text-black mb-2">Equipe especializada</h4>
+            <p class="text-black text-sm">
+              Profissionais experientes e capacitados para atendimento full-time.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   
-
+  <!-- About Service Section -->
+  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-90 text-center">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="font-horizon text-3xl md:text-4xl text-white mb-16 animate-fade-in">SOBRE O NOSSO SERVIÇO</h2>
+      <img src="assets/roteiro.webp" alt="Roteiro" class="mx-auto mb-8 w-full max-w-4xl animate-slide-up">
+      <p class="text-lg md:text-xl text-white max-w-4xl mx-auto mb-8 animate-slide-up delay-100">
+        Desde a <span class="text-orange-400 font-semibold">retirada</span> até a entrega final, 
+        a CH Terra <span class="text-orange-400 font-semibold">garante agilidade,</span> rastreabilidade, 
+        <span class="text-orange-400 font-semibold">seguro</span> e atendimento consultivo. Com anos de 
+        <span class="text-orange-400 font-semibold">experiência</span> no setor, somos <span class="text-orange-400 font-semibold">especialistas</span> em 
+        criar rotas seguras e <span class="text-orange-400 font-semibold">personalizadas.</span>
+      </p>
+      <button class="btn-gradient text-black font-horizon px-8 py-3 rounded-lg text-lg mx-auto animate-slide-up delay-200">
+        <a href="#form">Solicitar orçamento</a>
+      </button>
+    </div>
+  </section>
+  
+  <!-- FAQ Section -->
+  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-80">
+    <div class="max-w-7xl mx-auto">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-horizon text-center mb-16 animate-fade-in">
+        Perguntas <span class="gradient-text">frequentes</span>
+      </h1>
+      
+      <div class="max-w-4xl mx-auto space-y-4 animate-slide-up">
+        <!-- FAQ Item 1 -->
+        <div class="faq-item gradient-bg rounded-xl p-6 cursor-pointer" onclick="toggleFAQ(this)">
+          <div class="flex justify-between items-center">
+            <h3 class="text-lg md:text-xl font-bold">
+              O que é o serviço de transporte porta a porta?
+            </h3>
+            <i class="fas fa-chevron-down icon"></i>
+          </div>
+          <div class="faq-content mt-4">
+            <p class="text-gray-300">
+              Nosso serviço porta a porta garante que a carga seja retirada no local de origem e entregue diretamente ao destino final, sem a necessidade de intermediários ou trocas de veículo. Isso reduz riscos, evita avarias e agiliza o processo logístico.
+            </p>
+          </div>
+        </div>
+        
+        <!-- FAQ Item 2 -->
+        <div class="faq-item gradient-bg rounded-xl p-6 cursor-pointer" onclick="toggleFAQ(this)">
+          <div class="flex justify-between items-center">
+            <h3 class="text-lg md:text-xl font-bold">
+              Por que contratar um serviço com seguro incluso?
+            </h3>
+            <i class="fas fa-chevron-down icon"></i>
+          </div>
+          <div class="faq-content mt-4">
+            <p class="text-gray-300">
+              O seguro protege sua carga contra imprevistos como roubo, acidentes e danos. Com ele, você garante tranquilidade e respaldo em qualquer situação, além de demonstrar cuidado com o seu patrimônio.
+            </p>
+          </div>
+        </div>
+        
+        <!-- FAQ Item 3 -->
+        <div class="faq-item gradient-bg rounded-xl p-6 cursor-pointer" onclick="toggleFAQ(this)">
+          <div class="flex justify-between items-center">
+            <h3 class="text-lg md:text-xl font-bold">
+              Quais são os diferenciais da nossa transportadora?
+            </h3>
+            <i class="fas fa-chevron-down icon"></i>
+          </div>
+          <div class="faq-content mt-4">
+            <p class="text-gray-300">
+              Atuamos com foco em eficiência, pontualidade e relacionamento. Nosso atendimento é humanizado, a logística é personalizada para o seu negócio e contamos com um time preparado para atender desde pequenas cargas até grandes demandas com o mesmo padrão de excelência.
+            </p>
+          </div>
+        </div>
+        
+        <!-- FAQ Item 4 -->
+        <div class="faq-item gradient-bg rounded-xl p-6 cursor-pointer" onclick="toggleFAQ(this)">
+          <div class="flex justify-between items-center">
+            <h3 class="text-lg md:text-xl font-bold">
+              Qual o perfil ideal de cliente para o nosso serviço?
+            </h3>
+            <i class="fas fa-chevron-down icon"></i>
+          </div>
+          <div class="faq-content mt-4">
+            <p class="text-gray-300">
+              Empresas que valorizam entregas seguras, com prazos cumpridos e rastreamento total. Atendemos desde indústrias a distribuidores e varejistas que buscam confiança, suporte e performance no transporte de seus produtos.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Testimonials Section -->
+  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-90">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="font-horizon text-4xl md:text-5xl text-center text-white mb-16 animate-fade-in">
+        A voz de quem confia na nossa jornada
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 animate-slide-up">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card">
+          <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+               alt="Cliente Piramidal" 
+               class="testimonial-image">
+          <div class="gradient-bg p-6">
+            <p class="text-white italic">
+              "Desde que comecei a utilizar os serviços da empresa, minhas entregas passaram a ser muito mais ágeis e organizadas. O atendimento é impecável e o acompanhamento em tempo real traz uma segurança que eu nunca tive com outras transportadoras."
+            </p>
+            <p class="text-orange-400 font-semibold mt-4">- Alberto</p>
+          </div>
+        </div>
+        
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card">
+          <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+               alt="Cliente Entec" 
+               class="testimonial-image">
+          <div class="gradient-bg p-6">
+            <p class="text-white italic">
+              "O que mais me impressionou foi a pontualidade e o cuidado com a carga. Além disso, o suporte é sempre muito atencioso e disposto a ajudar. Sem dúvidas, se tornou minha transportadora de confiança."
+            </p>
+            <p class="text-orange-400 font-semibold mt-4">- Roberta</p>
+          </div>
+        </div>
+        
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card">
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+               alt="Cliente Download" 
+               class="testimonial-image">
+          <div class="gradient-bg p-6">
+            <p class="text-white italic">
+              "Com a entrega porta a porta e o alinhamento personalizado das rotas, conseguimos otimizar nossas operações e reduzir custos. É uma parceria que agrega valor real ao nosso negócio."
+            </p>
+            <p class="text-orange-400 font-semibold mt-4">- Thalia</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- CTA Section -->
+  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-80 text-center">
+    <div class="max-w-4xl mx-auto">
+      <img src="assets/logobig.webp" alt="Logo CH Terra" class="mx-auto mb-12 w-full max-w-xs animate-fade-in">
+      <h3 class="text-2xl md:text-3xl font-bold text-white mb-6 animate-slide-up">
+        Pronto para descobrir como podemos transformar sua operação em uma experiência segura e eficiente?
+      </h3>
+      <p class="text-lg text-gray-300 mb-8 animate-slide-up delay-100">
+        Oferecemos excelência para você e sua empresa.<br><br>
+        Preencha o formulário e conte com um time comprometido, ágil e próximo em todas as etapas do transporte.
+      </p>
+    </div>
+  </section>
+  
+  <!-- Form Section -->
+  <section id="form" class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-90">
+    <div class="max-w-4xl mx-auto">
+      <form id="contact-form" class="animate-slide-up">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <input type="text" id="nome" placeholder="Nome Completo" 
+                   class="w-full px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-orange-500 focus:outline-none transition">
+          </div>
+          <div>
+            <input type="email" id="email" placeholder="E-mail" 
+                   class="w-full px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-orange-500 focus:outline-none transition">
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <input type="tel" id="contato" placeholder="Contato" 
+                   class="w-full px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-orange-500 focus:outline-none transition">
+          </div>
+          <div>
+            <input type="text" id="coleta" placeholder="Endereço de Coleta" 
+                   class="w-full px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-orange-500 focus:outline-none transition">
+          </div>
+        </div>
+        
+        
+        <div class="mb-8">
+          <textarea id="description" rows="5" placeholder="Descreva a carga" 
+                    class="w-full px-4 py-3 rounded-lg bg-gray-800 text-white border border-gray-700 focus:border-orange-500 focus:outline-none transition"></textarea>
+        </div>
+        
+        <button type="button" onclick="Orcamento()" 
+                class="btn-gradient text-black font-horizon px-8 py-4 rounded-lg text-lg w-full md:w-auto mx-auto block">
+          Fale com especialista
+        </button>
+      </form>
+    </div>
+  </section>
+  
+  <!-- Modal Porta a Porta -->
+  <div class="modal-overlay" id="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal()">&times;</span>
+      <h2 class="font-horizon text-3xl text-orange-400 mb-6">Modal Porta a Porta</h2>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div>
+          <img src="https://images.unsplash.com/photo-1601584115197-04e5f451267a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+               alt="Modal Porta a Porta" 
+               class="rounded-lg w-full h-auto">
+        </div>
+        <div>
+          <p class="text-white mb-4">
+            O serviço de transporte porta a porta da CH Terra foi desenvolvido para oferecer a máxima comodidade e segurança no transporte de suas mercadorias. Nossa equipe especializada cuida de todo o processo, desde a coleta no local de origem até a entrega no destino final.
+          </p>
+          <p class="text-white mb-4">
+            <strong class="text-orange-400">Principais benefícios:</strong>
+          </p>
+          <ul class="text-white list-disc pl-5 mb-6 space-y-2">
+            <li>Redução de avarias e extravios</li>
+            <li>Menos manuseio da carga</li>
+            <li>Rastreamento em tempo real</li>
+            <li>Atendimento personalizado</li>
+            <li>Seguro completo incluso</li>
+          </ul>
+          <p class="text-white">
+            Ideal para cargas de alto valor, produtos frágeis ou mercadorias que exigem cuidados especiais durante o transporte.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer class="bg-gradient-to-r from-orange-700 to-yellow-600 text-white py-10 px-4 md:px-8 lg:px-16">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Social Media -->
+      <div class="text-center md:text-left">
+        <h3 class="font-horizon text-xl mb-4">Redes Sociais</h3>
+        <div class="flex justify-center md:justify-start space-x-4">
+          <a href="https://www.instagram.com/ch.terra/" target="_blank" class="text-white hover:text-black transition">
+            <i class="fab fa-instagram text-2xl"></i>
+          </a>
+          <a href="https://wa.me/5511981651780" target="_blank" class="text-white hover:text-black transition">
+            <i class="fab fa-whatsapp text-2xl"></i>
+          </a>
+          <a href="#" class="text-white hover:text-black transition">
+            <i class="fab fa-linkedin text-2xl"></i>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Address -->
+      <div class="text-center">
+        <h3 class="font-horizon text-xl mb-4">Contato</h3>
+        <p class="text-sm">
+          CHTERRA - Todos os direitos reservados
+        </p>
+      </div>
+      
+      <!-- Developer -->
+      <div class="text-center md:text-right">
+        <p class="mb-2">Desenvolvido por:</p>
+        <a href="https://www.instagram.com/cristatus.oficial/" target="_blank">
+          <img src="assets/Logo.webp" alt="Cristatus" class="h-12 inline-block">
+        </a>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    // Modal Functions
+    function openModal() {
+      document.getElementById('modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal() {
+      document.getElementById('modal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+    
+    // FAQ Function
+    function toggleFAQ(element) {
+      element.classList.toggle('active');
+    }
+    
+    // Form Function
+    function Orcamento() {
+      var nome = document.querySelector("#nome").value;
+      var email = document.querySelector("#email").value;
+      var contato = document.querySelector("#contato").value;
+      var coleta = document.querySelector("#coleta").value;
+      var destino = document.querySelector("#destino").value;
+      var description = document.querySelector("#description").value;
+      
+      if(nome === '' || email === '' || contato === '' || coleta === '' || destino === '' || description === '') {
+        alert('Por favor, preencha todos os campos obrigatórios.');
+        return;
+      }
+      
+      if(contato.length < 11) {
+        alert('Por favor, insira um número de telefone válido com DDD.');
+        return;
+      }
+      
+      var msg = `*Olá,* Vim através da sua página e gostaria de solicitar um orçamento. Seguem minhas informações:\n\n*Nome:* ${nome}\n*E-mail:* ${email}\n*Contato:* ${contato}\n*Endereço de coleta:* ${coleta}\n*Endereço de destino:* ${destino}\n*Descrição da carga:* ${description}`;
+      
+      var msgEncoded = encodeURIComponent(msg);
+      var linkWhatsApp = "https://api.whatsapp.com/send?phone=5511932223533&text=" + msgEncoded;
+      
+      window.open(linkWhatsApp, '_blank');
+    }
+    
+    // Animation on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      const animateElements = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+      
+      animateElements.forEach(element => {
+        observer.observe(element);
+      });
+    });
+  </script>
 </body>
 </html>

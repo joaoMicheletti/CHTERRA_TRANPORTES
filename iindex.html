@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <title>CH Terra | Transportes Rodoviários</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@font-face {
+    font-family: 'Horizon';
+    src: url(fonts/Horizon-updated/t/horizon.otf) format('truetype');
+}
+a {
+  text-decoration: none;
+  color: rgba(59, 56, 56, 0.671);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+  background-image: url('./assets/bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+  #primari {
+    width: 100%;
+  }
+  #primari video {
+    width: 100%;
+  }
+  #primari #containerPrimary {
+    width: 50%;
+    margin-left: 10%;
+    position: absolute;
+    margin-top: 250px;
+    z-index: 1000;
+  }
+  #containerPrimary h1 {
+    font-family: "Horizon";
+    color: white;
+    font-size: 45px;
+    line-height: 40px;
+  }
+  d {
+    color: #f39b1f;
+  }
+  e {
+    color: white;
+    font-weight: 900;
+  }
+  #containerPrimary p {
+    line-height: 28px;
+    font-size: 30px;
+    color: #f39b1f;
+    font-weight: 600;
+    font-family: "Montserrat";
+  }
+  #BtnPrimaty {
+    font-family: "Horizon";
+    color: rgb(8, 8, 8);
+    font-size: 15px;
+    cursor: pointer;
+    width: 50%;
+    height: 40px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(180deg, #cb4017, #f28b0c);
+  }
+  #BtnPrimaty:hover {
+    width: 52%;
+    height: 42px;
+  }
+  
+  #faixa {
+    margin-top: -13px;
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(180deg, #cb4017, #f28b0c);
+  }
+
+  #solucoes {
+    padding-top: 80px;
+    width: 100%;
+    height: auto;
+  }
+  #containerxp {
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 100px;
+    margin-bottom: 200px;
+  }
+  #xpimg {
+    width: 50%;
+  } #xpimg img {
+    width: 100%;
+  }
+  #TXTEXP {
+    margin-left: 10%;
+    width: 40%;
+    font-family: "Montserrat";
+    font-weight: 600;
+    color: white;
+  }
+
+y {
+  color: #f39b1f;
+}
+@media(max-width: 800px){
+  #containerxp {
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+    margin-bottom: 200px;
+  }
+  #xpimg {
+    width: 90%;
+    margin-left: 5%;
+    margin-bottom: 30px;
+  } #xpimg img {
+    width: 100%;
+  }
+  #TXTEXP {
+    margin-left: 10%;
+    width: 80%;
+    font-family: "Montserrat";
+    font-weight: 600;
+    color: white;
+  }
+}
+
+
+  #ContainerSolucoes{
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 80px;
+  }
+  #cardUnico {
+    width: 50%;
+  }
+  .imgunica {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 50%;
+    border-radius: 20px;
+  }
+  #tituloUnico {
+    font-family: "Horizon";
+    font-size: 40px;
+    color: #f39b1f;
+    line-height: 35px;
+  }#corpoUnico {
+    font-family: "Montserrat";
+    color: rgb(252, 251, 251);
+    font-size: 18px;
+    font-weight: 400;
+  }
+  #solucoesapresentadas{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .divCards {
+    margin-left: 5%;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .card {
+    background: linear-gradient(180deg, #cb4017, #f28b0c);
+    padding: 20px;
+    width: 40%;
+    border-radius: 5px;
+  }
+  .cardTitulo {
+    font-family: "Horizon";
+    color: black;
+    font-size: 10px;
+    line-height: 15px;
+  }
+  .cardCorpo {
+    margin-top: 10px;
+    line-height: 15px;
+    font-weight: 500;
+    color: black;
+    font-family: "Montserrat";
+  }
+  
+  @media(max-width: 800px){
+    #ContainerSolucoes{
+      width: 90%;
+      margin-left: 5%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-bottom: 80px;
+    }
+    #cardUnico {
+      width: 90%;
+      margin-left: 5%;
+      padding-bottom: 50px;
+    }.imgunica{
+      margin-top: 10px;
+      margin-left: 25%;
+      width: 50%;
+    }
+    #tituloUnico {
+      font-family: "Horizon";
+      font-size: 40px;
+      color: #f39b1f;
+    }#corpoUnico {
+      font-family: "Montserrat";
+      font-size: 18px;
+      font-weight: 400;
+    }
+    #solucoesapresentadas{
+      padding-top: 20px;
+      width: 90%;
+      margin-left: 5%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+    .divCards {
+      margin-left: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .card {
+      background: linear-gradient(180deg, #cb4017, #f28b0c);
+      padding: 20px;
+      width: 45%;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    .cardTitulo {
+      font-family: "Horizon";
+      color: black;
+      font-size: 9px;
+      line-height: 15px;
+    }
+    .cardCorpo {
+      margin-top: 10px;
+      line-height: 15px;
+      color: black;
+      font-family: "Montserrat";
+      font-size: 10px;
+    }
+
+  }
+
+
+
+  
+  #Servicos {
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+    height: auto;
+    color: white;
+    font-family: "Montserrat";
+    font-size: 18px;
+  }
+  #servicosh1 {
+    font-size: 30px;
+    margin-bottom: 80px;
+  }
+  #roteiro{
+    width: 80%;
+  }
+  #textoSevicos {
+    padding: 30px;
+  }
+  
+
+
+
+  h2 {
+    font-family: "Horizon";
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 80px;
+    color: white;
+  }
+  #depoimentos {
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-bottom: 100px;
+  }
+  .depcard{
+    background-color: #3d3d3c13;
+    width: 30%;
+    border-radius: 5px;
+  }.imgDepCard {
+    width: 100%;
+  }.imgDepCard img {
+    width: 100%;
+    border-radius: 5px 5px;
+  }.corpoCardDep {
+    padding: 10px;
+    font-family: "Montserrat";
+    color: #fffdfd;
+    font-weight: 600;
+  }
+  #duvida {
+    margin-left: 10%;
+    width: 80%;
+    font-family: "Montserrat";
+    color: white;
+    line-height: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 50px;
+  }
+
+@media(max-width: 800px){
+  #depoimentos {
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-bottom: 150px;
+  }
+  .depcard{
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 5px;
+    margin-bottom: 30px;
+  }.imgDepCard {
+    width: 100%;
+  }.imgDepCard img {
+    width: 100%;
+    border-radius: 5px 5px;
+  }
+}
+
+
+#Formulario {
+    width: 100%;
+}
+#containerForm {
+    width: 90%;
+    margin-left: 5%;
+}
+#Form{
+  margin-left: 10%;
+    width: 80%;
+}
+#f {
+    display: flex;
+    flex-direction: column;
+}#f input {
+    border: none;
+    margin-left: 10%;
+    width: 80%;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #fafafa;
+}
+#mensagem {
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 5px;
+    background-color: #fafafa;
+    margin-bottom: 12px;
+}
+#submit{
+    cursor: pointer;
+    color: black;
+    font-family: "Horizon";
+    width: 80%;
+    margin-left: 10%;
+    height: 50px;
+    border-radius: 5px;
+    border: solid 1px gold;
+    margin-bottom: 50px;
+    background: linear-gradient(180deg, #cb4017, #f28b0c);
+}
+#submit:hover{
+    opacity: 80%;
+}
+#logoBig {
+  text-align: center;
+  width: 80%;
+  margin-left: 10%;
+}#logoBig img {
+  width: 30%;
+  margin-bottom: 30px;
+}
+
+@media(max-width:800px){
+  header {
+    color: #fff;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    height: 40px;
+  }header img {
+    width: 80px;
+  }#primari {
+    width: 100%;
+    height: auto;
+  }
+  #primari video {
+    width: 100%;
+  }
+  #primari #containerPrimary {
+    width: 90%;
+    margin-left: 5%;
+    position: absolute;
+    margin-top: 30px;
+    z-index: 1000;
+  }
+  #containerPrimary h1 {
+    font-family: "Horizon";
+    color: white;
+    font-size: 20px;
+    line-height: 25px;
+  }
+  d {
+    color: #f39b1f;
+  }
+  e {
+    color: white;
+    font-weight: 900;
+  }
+  #containerPrimary p {
+    line-height: 15px;
+    font-size: 15px;
+    color: #f39b1f;
+    font-weight: 600;
+    font-family: "Montserrat";
+  }
+  #BtnPrimaty {
+    font-family: "Horizon";
+    color: rgb(20, 19, 19);
+    font-size: 10px;
+    cursor: pointer;
+    width: 70%;
+    height: 40px;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+    background: linear-gradient(180deg, #cb4017, #f28b0c);
+  }
+  #BtnPrimaty:hover {
+    width: 52%;
+    height: 42px;
+  }
+  #solucoes {
+    width: 100%;
+    height: auto;
+    background-repeat: no-repeat;
+  }#solucoes h1 {
+    padding-top: 40px;
+    margin-bottom: 50px;
+    text-align: center;
+    font-family: "Horizon";
+    color: white;
+  }
+  .soluAplicadas{
+    width: 90%;
+    margin-left: 5%;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: transparent;
+    backdrop-filter: blur(5px);
+  }
+  .cardSolucao {
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+  }
+  .titleSolucao{
+    font-family: "Horizon";
+    color: #f39b1f;
+    font-size: 15px;
+    text-align: left;
+  }.corpoSolucao {
+    color: white;
+    font-family: "Montserrat";
+    font-size: 18px;
+    text-align: left;
+  }
+  #Servicos {
+    text-align: center;
+    width: 90%;
+    margin-left: 5%;
+    height: auto;
+    color: white;
+    font-family: "Montserrat";
+    font-size: 18px;
+  }
+  #servicosh1 {
+    font-size: 20px;
+  }
+  #roteiro{
+    width: 100%;
+  }
+  #textoSevicos {
+    padding: 30px;
+  }
+  #Formulario {
+    width: 100%;
+  }
+  #containerForm {
+      width: 90%;
+      margin-left: 5%;
+      display: flex;
+  }
+  #Form{
+      width: 90%;
+      margin-left: 5%;
+  }
+  #f {
+      display: flex;
+      flex-direction: column;
+  }#f input {
+      color: white;
+      width: 80%;
+      margin-left: 10%;
+      height: 40px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: solid 1px gold;
+      background-color: #33333336;
+  }
+  #mensagem {
+      border-radius: 5px;
+      margin-bottom: 20px;
+  }
+  #submit{
+      margin-top: 10px;
+      cursor: pointer;
+      color: black;
+      font-family: "Horizon";
+      width: 80%;
+      margin-left: 10%;
+      height: 40px;
+      border-radius: 5px;
+      border: solid 1px gold;
+      margin-bottom: 50px;
+      background: linear-gradient(180deg, #cb4017, #f28b0c);
+  }
+  #submit:hover{
+      opacity: 80%;
+  }
+}
+footer {
+  background: linear-gradient(180deg, #cb4017, #f28b0c);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+#SocialRede  {
+  margin-top: 10px;
+}
+#developer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+#developer p {
+  margin-top: 20px;
+  padding: 10px;
+}
+#logoDEveloper {
+  width: 50px;
+}#Indereço  {
+  font-family: "Montserrat";
+  padding: 20px;
+}
+.pFooter{
+  font-family: "Montserrat";
+}
+footer  a {
+  margin-top: 10px;
+  color: rgb(255, 255, 255);
+  font-family: "Horizon";
+  text-decoration: none;
+}
+@media(max-width: 800px){
+  footer{
+      flex-direction: column;
+  }
+  #SocialRede {
+      width: 90%;
+      margin-left: 5%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      margin-bottom: 10px;
+  }#developer {
+      width: 50%;
+      margin-left: 25%;
+  }
+}
+  </style>
+  <script>
+    function Orcamento(){
+        var nome = document.querySelector("#nome").value;
+        var email = document.querySelector("#email").value;
+        var contato = document.querySelector("#contato").value;
+        var coleta = document.querySelector("#coleta").value;
+        var destino = document.querySelector("#destino ").value;
+        var description = document.querySelector("#description").value;
+        console.log(nome, email, contato,coleta, destino, description);
+        if(nome === ''){
+            alert('Preencha todos os campos');
+        } else if (email === ''){
+            alert('Preencha todos os campos');
+        } else if(contato == '') {
+            alert('Preencha todos os campos');
+        }else if (contato.length < 11 || contato.length > 11) {
+            alert('Forneça um número de Telefone Válido');
+        } else if(coleta === ''){
+            alert("Preencha todos os campos");
+        } else if(destino === ''){
+            alert("Preencha todos os campos");
+        } else if (description === ''){
+            alert("preencha todos os campos");
+        } else {
+            var msg = `
+            *Olá,* Vim através da sua página de vendas e gostaria de solicitar um orçamento. Seguem minhas informações:\n*Nome:*__ ${nome}\n*E-mail:*__ ${email}\n*Contato:* __ ${contato}\n*Endereço de coleta:* __ ${coleta}\n*Endereço de destino:* __ ${destino}\n*Descrição da carga:* __ ${description}\n
+            `;
+            
+            var msgEncoded = encodeURIComponent(msg);
+
+            var linkWhatsApp = "https://api.whatsapp.com/send?phone=5511932223533&text=" + msgEncoded;
+
+            // Abra o link em uma nova janela ou redirecione para ele
+            window.open(linkWhatsApp, '_blank');
+        }        
+    }
+  </script>
+</head>
+<body>
+  <section id="primari">
+    <div id="container">
+        <div id="containerPrimary">
+            <h1>
+                <d>TRANSPORTE</d><br/>
+                <e>RAPIDO, SEGURO</e><br/> <f>E UMANIZADO.</f></h1>
+            <p>A CH Terra é especializada em transporte rodoviário porta a porta, com foco em cargas de alto valor e alto risco.</p>
+            <button id="BtnPrimaty"> <a href="#f">Solicitar orçamento</a></button>
+        </div>
+        <video loop="loop" autoplay="" playsinline="" muted=""  preload="none" src="assets/definitivo.mp4"></video>
+    </div>
+  </section>
+
+
+  <div id="faixa"></div>
+
+
+
+
+  <section id="solucoes">
+    <div id="containerxp">
+        <div id="xpimg">
+            <img src="assets/slogan.webp" alt="texto decorativo">
+        </div>
+        <div id="TXTEXP">
+            <p id="pxp">
+                Oferecemos alinhamento <y>estratégico</y> de prazos, rotas e 
+                condições, com coleta e entrega <y>porta a porta</y>, garantindo 
+                agilidade e praticidade para o seu negócio. Nosso 
+                atendimento é próximo e humanizado, acompanhando 
+                você em todas as etapas.
+                Tudo isso com um <y>planejamento</y> eficiente e <y>monitoramento 
+                em tempo real</y>, do início ao fim da jornada da sua carga. 
+                O <y>resultado?</y> Mais tranquilidade e mais tempo <y>livre</y> para você 
+                focar no que realmente <y>importa</y>.
+            </p>
+            <button id="BtnPrimaty"> <a href="#f">Solicitar orçamento</a></button>
+        </div>
+    </div>
+
+
+
+
+
+    <div id="ContainerSolucoes">
+        <div id="cardUnico">
+            <img class="imgunica" src="assets/porta.webp" alt="imgilustyrativa porta a porta"/>
+            <p id="tituloUnico">Modal porta a porta</p>
+            <p id="corpoUnico">
+                Com o modal porta a porta, a entrega é direta e sem complicações. 
+                Coletamos sua carga na origem e a levamos até o destino final sem 
+                intermediários, garantindo mais agilidade, segurança e controle sobre 
+                cada etapa do transporte. Uma solução sob medida para quem busca 
+                eficiência e tranquilidade em cada envio. 
+
+            </p>
+
+        </div>
+        <div id="solucoesapresentadas">
+            <div class="divCards">
+                <div class="card">
+                    
+                    <p class="cardTitulo">Seguro completo</p>
+                    <p class="cardCorpo">
+                          Cobertura contra roubo, furto 
+                        e responsabilidade civil, 
+                        sobre o valor total das mercadorias transportadas.
+                    </p>
+                </div>
+                <div class="card">
+                    
+                    <p class="cardTitulo">Monitoramento em tempo real </p>
+                    <p class="cardCorpo">
+                        Acompanhamento completo do 
+                        trajeto com foco em diminuição de riscos.</p>
+                </div>
+            </div>
+
+            <div class="divCards">
+                <div class="card">
+                    
+                    <p class="cardTitulo">Gerenciamento <br/>completo da operação</p>
+                    <p class="cardCorpo">
+                        Desde o planejamento de embarques, 
+                        roteirização estratégica, até o pós- venda.
+                    </p>
+                </div>
+                <div class="card">
+                    
+                    <p class="cardTitulo">Equipe especializada</p>
+                    <p class="cardCorpo">
+                        
+                        Profissionais experientes e capacitados para atendimento full-time
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="Servicos">
+        <h1 id="servicosh1">SOBRE O NOSSO SERVIÇO</h1>
+        <img id="roteiro" src="assets/roteiro.webp" alt="roteiro"/>
+        <p id="textoSevicos">
+            Desde a <d>retirada</d> até a entrega final, 
+            a CH Terra <d>garante agilidade,</d> rastreabilidade, 
+            <d><b>seguro</b></d> e atendimento consultivo. Com anos de 
+            <d>experiência</d> no setor, somos <d><b>especialistas</b></d> em 
+            criar rotas seguras e <d><b>personalizadas.</b></d>
+        </p>
+        <button id="BtnPrimaty"><a href="#f">Solicitar orçamento</a></button>
+        <br/><br/><br/><br/><br/><br/>
+    </div>
+
+     <!-- FAQ Section -->
+    <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-80">
+        <div class="max-w-7xl mx-auto">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-horizon text-center mb-16 animate-fade-in">
+                Perguntas <span class="gradient-text">frequentes</span>
+            </h1>
+            
+            <div class="max-w-4xl mx-auto space-y-4 animate-slide-up">
+                <!-- FAQ Item 1 -->
+                <div onclick="Pergunta('p01')" class="gradient-bg rounded-xl p-6 cursor-pointer faq-item" id="p01">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-bold font-montserrat">
+                            O que é o serviço de transporte porta a porta?
+                        </h3>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </div>
+                    <div class="resposta mt-4 hidden" id="r01">
+                        <p class="font-montserrat">
+                            Nosso serviço porta a porta garante que a carga seja retirada no local de origem e entregue diretamente ao destino final, sem a necessidade de intermediários ou trocas de veículo. Isso reduz riscos, evita avarias e agiliza o processo logístico.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div onclick="Pergunta('p02')" class="gradient-bg rounded-xl p-6 cursor-pointer faq-item" id="p02">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-bold font-montserrat">
+                            Por que contratar um serviço com seguro incluso?
+                        </h3>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </div>
+                    <div class="resposta mt-4 hidden" id="r02">
+                        <p class="font-montserrat">
+                           O seguro protege sua carga contra imprevistos como roubo, acidentes e danos. Com ele, você garante tranquilidade e respaldo em qualquer situação, além de demonstrar cuidado com o seu patrimônio.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div onclick="Pergunta('p03')" class="gradient-bg rounded-xl p-6 cursor-pointer faq-item" id="p03">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-bold font-montserrat">
+                            Quais são os diferenciais da nossa transportadora?
+                        </h3>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </div>
+                    <div class="resposta mt-4 hidden" id="r03">
+                        <p class="font-montserrat">
+                             Atuamos com foco em eficiência, pontualidade e relacionamento. Nosso atendimento é humanizado, a logística é personalizada para o seu negócio e contamos com um time preparado para atender desde pequenas cargas até grandes demandas com o mesmo padrão de excelência.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div onclick="Pergunta('p04')" class="gradient-bg rounded-xl p-6 cursor-pointer faq-item" id="p04">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-bold font-montserrat">
+                             Qual o perfil ideal de cliente para o nosso serviço?
+                        </h3>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </div>
+                    <div class="resposta mt-4 hidden" id="r04">
+                        <p class="font-montserrat">
+                            Empresas que valorizam entregas seguras, com prazos cumpridos e rastreamento total. Atendemos desde indústrias a distribuidores e varejistas que buscam confiança, suporte e performance no transporte de seus produtos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+<h2>A voz de quem confia na nossa jornada</h2>
+    <div id="depoimentos">
+        <div class="depcard">
+            <div class="imgDepCard">
+                <img src="assets/piramidal.webp" alt="img de usuario de depoimento"/>
+            </div>
+            <p class="corpoCardDep">
+                Desde que comecei a utilizar os serviços da empresa, 
+                minhas entregas passaram a ser muito mais ágeis e 
+                organizadas. O atendimento é impecável e o acompanhamento 
+                em tempo real traz uma segurança que eu nunca 
+                tive com outras transportadoras.
+            </p>
+        </div>
+        <div class="depcard">
+            <div class="imgDepCard">
+                <img src="assets/download.webp" alt="img de usuario de depoimento"/>
+            </div>
+            <p class="corpoCardDep">
+                O que mais me impressionou foi a pontualidade 
+                e o cuidado com a carga. Além disso, o suporte 
+                é sempre muito atencioso e disposto a ajudar. 
+                Sem dúvidas, se tornou minha transportadora de confiança.
+            </p>
+        </div>
+        <div class="depcard">
+            <div class="imgDepCard">
+                <img src="assets/entec (2).webp" alt="img de usuario de depoimento"/>
+            </div>
+            <p class="corpoCardDep">
+                Com a entrega porta a porta e o alinhamento 
+                personalizado das rotas, conseguimos otimizar 
+                nossas operações e reduzir custos. É uma 
+                parceria que agrega valor real ao nosso negócio.
+            </p>
+        </div>
+
+    </div>
+    <div id="logoBig">
+        <img src="assets/logobig.webp" alt="Logo Big" />
+    </div>
+    <h3>Pronto para descobrir como podemos transformar sua operação em uma experiência segura e eficiente?</h3>
+    <p>
+        Oferecemos excelência para você e sua empresa.
+        <br/><br/>
+        Preencha o formulário e conte com um time comprometido, ágil e próximo em todas as etapas do transporte.
+    </p>
+    <section id="Formulario">
+        <div id="containerForm">
+            <div id="Form">
+                <div id="f">
+                    <input id="nome" placeholder="  Nome Completo" type="text"/>
+                    <input id="email" placeholder="  E-mail" type="email"/>
+                    <input id="contato" placeholder="  Contato" type="number"/>
+                    <textarea
+                        placeholder="   Descreva a carga" 
+                        id="mensagem" name="mensagem" rows="5" cols="1">
+                    </textarea>
+
+                    <button onclick="Orcamento()"  id="submit">fale com especialista </button>
+                </div>
+            </div>
+        </div>
+    </section>
+  </section>
+  <footer>
+    <div id="SocialRede">
+        <a  target="_blank" href="https://www.instagram.com/ch.terra/"><img src="assets/insta.png" alt="logo instagram"/></a>
+        <a target="_blank" href="https://wa.me/5511981651780?text=vim%20atrav%C3%A9s%20da%20sua%20p%C3%A1gina%20de%20loca%C3%A7%C3%A3o%20de%20m%C3%A1quinas%20queria%20mais%20informa%C3%A7%C3%B5es%20a%20respeito
+        "><img src="assets/wh.png" alt="logo whatsapp"/></a>
+        <a href=""><img src="assets/lk.png" alt="logo linkedin"/></a>
+    </div>
+    <div id="Indereço">
+        <p class="pFooter">CHTERRA - Todos os direitos reservado</p>
+    </div>  
+    <div id="developer">
+        <p>Desenvolvido pela:</p>
+        <a href="https://www.instagram.com/cristatus.oficial/"><img id="logoDEveloper" src="assets/Logo.webp" alt="logoCristatus"/></a>
+    </div>
+       
+</footer>
+  
+  
+
+</body>
+</html>
