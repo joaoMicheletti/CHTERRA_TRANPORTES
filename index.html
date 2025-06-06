@@ -102,7 +102,6 @@
       flex-direction: column;
       justify-content: center;
       padding: 0 10%;
-      background: rgba(0, 0, 0, 0.5);
     }
     
     /* Modal Porta a Porta */
@@ -274,6 +273,9 @@
       margin-bottom: 20px;
       height: 130px;
     }
+    #TRANSFORME {
+      font-family: "Horizon";
+    }
     /* Responsive Adjustments */
     @media (max-width: 768px) {
       .hero-content {
@@ -294,6 +296,15 @@
       }
       #LogoBig {
         width: 45%;
+      }
+      #sRoteiro {
+        padding: 0;
+      }
+      #dSR{
+        width: 100%;
+      }
+      #roteiro {
+        width: 100%
       }
     }
   </style>
@@ -321,7 +332,7 @@
   <div class="h-4 w-full bg-gradient-to-r from-orange-700 to-yellow-600"></div>
   
   <!-- About Section -->
-  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-50">
+  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-10">
     <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center">
       <div class="w-full lg:w-1/2 mb-10 lg:mb-0 animate-slide-up">
         <img src="assets/slogan.webp" alt="Texto decorativo" class="rounded-lg shadow-xl w-full">
@@ -346,7 +357,7 @@
   </section>
   
   <!-- Services Section -->
-  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-50">
+  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-10">
     <div class="max-w-7xl mx-auto flex flex-col lg:flex-row">
       <!-- Modal Porta a Porta -->
       <div class="w-full lg:w-1/2 mb-16 lg:mb-0 lg:pr-8 animate-slide-up">
@@ -360,7 +371,7 @@
               Com o modal porta a porta, a entrega é direta e sem complicações. 
               Coletamos sua carga na origem e a levamos até o destino final sem 
               intermediários, garantindo mais agilidade, segurança e controle sobre 
-              cada etapa do transporte. Uma solução sob medida para quem busca 
+              cada etapa dotransporte. Uma solução sob medida para quem busca 
               eficiência e tranquilidade em cada envio.
             </p>
             <button class="text-white font-semibold mt-4 flex items-center">
@@ -428,10 +439,10 @@
   </section>
   
   <!-- About Service Section -->
-  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-50 text-center">
-    <div class="max-w-7xl mx-auto">
+  <section id="sRoteiro" class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-10 text-center">
+    <div id="dSR" class="max-w-7xl mx-auto">
       <h2 class="font-horizon text-3xl md:text-4xl text-white mb-16 animate-fade-in font-bold">SOBRE O NOSSO SERVIÇO</h2>
-      <img src="assets/roteiro.webp" alt="Roteiro" class="mx-auto mb-8 w-full max-w-4xl animate-slide-up">
+      <img src="assets/roteiro.webp" alt="Roteiro" id="roteiro" class="mx-auto mb-8 w-full max-w-7xl animate-slide-up">
       <p class="text-lg md:text-xl text-white max-w-4xl mx-auto mb-8 animate-slide-up delay-100">
         Desde a <span class="text-orange-400 font-semibold">retirada</span> até a entrega final, 
         a CH Terra <span class="text-orange-400 font-semibold">garante agilidade,</span> rastreabilidade, 
@@ -446,7 +457,7 @@
   </section>
   
   <!-- FAQ Section -->
-  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-50">
+  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-10">
     <div class="max-w-7xl mx-auto">
       <h1 class="font-bold text-4xl md:text-5xl lg:text-6xl font-horizon text-center mb-16 animate-fade-in">
         PERGUNTAS <span class="gradient-text">FREQUENTES</span>
@@ -508,7 +519,10 @@
           </div>
           <div class="faq-content mt-4">
             <p class="text-white">
-              Empresas que valorizam entregas seguras, com prazos cumpridos e rastreamento total. Atendemos desde indústrias a distribuidores e varejistas que buscam confiança, suporte e performance no transporte de seus produtos.
+              Empresas que valorizam entregas seguras, com prazos
+              cumpridos e rastreamento total. Atendemos desde 
+              indústrias a distribuidores e varejistas que 
+              buscam confiança, suporte e performance no transporte de seus produtos.
             </p>
           </div>
         </div>
@@ -517,7 +531,7 @@
   </section>
   
   <!-- Testimonials Section -->
-  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-50">
+  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-10">
     <div class="max-w-7xl mx-auto">
       <h2 style="text-align: center;" class=" md:text-5x1 text-4xl  font-bold text-white mb-6 animate-slide-up font-font-horizon">
         A VOZ DE QUEM CONFIA NA NOSSA JORNADA
@@ -531,7 +545,10 @@
                class="testimonial-image">
           <div class="gradient-bg p-6">
             <p class="text-white italic">
-              "Desde que comecei a utilizar os serviços da empresa, minhas entregas passaram a ser muito mais ágeis e organizadas. O atendimento é impecável e o acompanhamento em tempo real traz uma segurança que eu nunca tive com outras transportadoras."
+              "Desde que comecei a utilizar os serviços da empresa, minhas
+               entregas passaram a ser muito mais ágeis e organizadas. O 
+               atendimento é impecável e o acompanhamento em tempo real traz 
+               uma segurança que eu nunca tive com outras transportadoras."
             </p>
             <p class="text-orange-400 font-semibold mt-4">- Alberto</p>
           </div>
@@ -544,7 +561,9 @@
                class="testimonial-image">
           <div class="gradient-bg p-6">
             <p class="text-white italic">
-              "O que mais me impressionou foi a pontualidade e o cuidado com a carga. Além disso, o suporte é sempre muito atencioso e disposto a ajudar. Sem dúvidas, se tornou minha transportadora de confiança."
+              "O que mais me impressionou foi a pontualidade e o cuidado com a
+               carga. Além disso, o suporte é sempre muito atencioso e disposto
+                a ajudar. Sem dúvidas, se tornou minha transportadora de confiança."<br/><br/><br/>
             </p>
             <p class="text-orange-400 font-semibold mt-4">- Roberta</p>
           </div>
@@ -557,7 +576,7 @@
                class="testimonial-image">
           <div class="gradient-bg p-6">
             <p class="text-white italic">
-              "Com a entrega porta a porta e o alinhamento personalizado das rotas, conseguimos otimizar nossas operações e reduzir custos. É uma parceria que agrega valor real ao nosso negócio."
+              "Com a entrega porta a porta e o alinhamento personalizado das rotas, conseguimos otimizar nossas operações e reduzir custos. É uma parceria que agrega valor real ao nosso negócio."<br/><br/><br/>
             </p>
             <p class="text-orange-400 font-semibold mt-4">- Thalia</p>
           </div>
@@ -567,14 +586,13 @@
   </section>
   
   <!-- CTA Section -->
-  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-50 text-center">
+  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-10 text-center">
     <div class="max-w-4xl mx-auto">
-      <img src="assets/logobig.webp" alt="Logo CH Terra" id="LogoBig" class="mx-auto mb-12 w-full max-w-xs animate-fade-in">
-      <h3 class="text-2xl md:text-5xl font-bold text-white mb-6 animate-slide-up font-font-horizon">
-        TRANSFORME SUA OPERAÇÃO DE FORMA SEGURA E EFICIENTE!
+      <img src="assets/logobig.webp" alt="Logo CH Terra" id="LogoBig" class="mx-auto w-48 mb-6">
+      <h3 id="TRANSFORME" class=" lg:text-4xl text-white mb-6 ">
+        TRANSFORME SUA OPERAÇÃO COM SEGURANÇA E EFICIÊNCIA!
       </h3>
-      <p class="text-lg text-white mb-8 animate-slide-up delay-100">
-        
+      <p  style="font-size: 25px;" class="text-lg text-white mb-8 animate-slide-up delay-100">
         Preencha o formulário e conte com um time comprometido, ágil e próximo em todas as etapas do transporte.
       </p>
       
@@ -582,8 +600,8 @@
   </section>
   
   <!-- Form Section -->
-  <section id="form" class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-50">
-    <div class="max-w-4xl mx-auto">
+  <section id="form" class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-10">
+    <div class="max-w-2xl mx-auto">
       <form id="containerForm" class="animate-slide-up">
         <label>
           Nome Completo *
