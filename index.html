@@ -95,13 +95,13 @@
     }
     
     .hero-content {
-      position: relative;
-      z-index: 2;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 0 10%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      width: 90%;
+      max-width: 1200px;
     }
     
     /* Modal Porta a Porta */
@@ -197,9 +197,7 @@
     
     /* Testimonials */
     .testimonial-card {
-      transition: all 0.3s ease;
       border-radius: 10px;
-      overflow: hidden;
     }
     
     .testimonial-card:hover {
@@ -249,10 +247,19 @@
       animation-delay: 0.3s;
     }
     /* ajuste o css do formulário*/
+    #form{
+      margin-top: -110px;
+    
+    }
+    #dvForm {
+      width: 50%;
+      margin-left: 25%;
+    }
     #containerForm {
-      margin-top: -120px;
+      width: 80%;
+      margin-left: 10%;
       padding: 25px;
-      background-color: rgba(199, 195, 195, 0.11);
+      background-color: rgba(148, 142, 142, 0.123);
       backdrop-filter: blur(4px);
       border-radius: 15px;
     }
@@ -276,6 +283,7 @@
     #TRANSFORME {
       font-family: "Horizon";
     }
+    
     /* Responsive Adjustments */
     @media (max-width: 768px) {
       .hero-content {
@@ -306,6 +314,15 @@
       #roteiro {
         width: 100%
       }
+      #dvForm {
+        margin-top: -30px;
+        width: 100%;
+        margin-left: 0%;
+      }
+      #containerForm {
+        width: 90%;
+        margin-left: 5%;
+      }
     }
   </style>
 </head>
@@ -322,7 +339,7 @@
       <p class="hero-subtitle text-xl md:text-2xl text-orange-400 font-semibold mb-8 animate-fade-in delay-100">
         A CH Terra é especializada em transporte rodoviário porta a porta.
       </p>
-      <button class="btn-gradient font-bold text-white font-horizon px-8 py-3 rounded-lg text-lg w-full md:w-auto animate-fade-in delay-200">
+      <button class="btn-gradient font-bold text-white font-horizon px-8 py-3 rounded-lg text-lg w-full md:w-100 animate-fade-in delay-200">
         <a href="#form">SOLICITAR ORÇAMENTO</a>
       </button>
     </div>
@@ -332,7 +349,7 @@
   <div class="h-4 w-full bg-gradient-to-r from-orange-700 to-yellow-600"></div>
   
   <!-- About Section -->
-  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-10">
+  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-0">
     <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center">
       <div class="w-full lg:w-1/2 mb-10 lg:mb-0 animate-slide-up">
         <img src="assets/slogan.webp" alt="Texto decorativo" class="rounded-lg shadow-xl w-full">
@@ -357,7 +374,7 @@
   </section>
   
   <!-- Services Section -->
-  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-10">
+  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-0">
     <div class="max-w-7xl mx-auto flex flex-col lg:flex-row">
       <!-- Modal Porta a Porta -->
       <div class="w-full lg:w-1/2 mb-16 lg:mb-0 lg:pr-8 animate-slide-up">
@@ -439,7 +456,7 @@
   </section>
   
   <!-- About Service Section -->
-  <section id="sRoteiro" class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-10 text-center">
+  <section id="sRoteiro" class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-0 text-center">
     <div id="dSR" class="max-w-7xl mx-auto">
       <h2 class="font-horizon text-3xl md:text-4xl text-white mb-16 animate-fade-in font-bold">SOBRE O NOSSO SERVIÇO</h2>
       <img src="assets/roteiro.webp" alt="Roteiro" id="roteiro" class="mx-auto mb-8 w-full max-w-7xl animate-slide-up">
@@ -457,7 +474,7 @@
   </section>
   
   <!-- FAQ Section -->
-  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-10">
+  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-0">
     <div class="max-w-7xl mx-auto">
       <h1 class="font-bold text-4xl md:text-5xl lg:text-6xl font-horizon text-center mb-16 animate-fade-in">
         PERGUNTAS <span class="gradient-text">FREQUENTES</span>
@@ -531,19 +548,19 @@
   </section>
   
   <!-- Testimonials Section -->
-  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-10">
+  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-0">
     <div class="max-w-7xl mx-auto">
       <h2 style="text-align: center;" class=" md:text-5x1 text-4xl  font-bold text-white mb-6 animate-slide-up font-font-horizon">
         A VOZ DE QUEM CONFIA NA NOSSA JORNADA
       </h2>
       
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 animate-slide-up">
+      <div  class="grid grid-cols-1 md:grid-cols-3 gap-8 animate-slide-up">
         <!-- Testimonial 1 -->
-        <div class="testimonial-card">
+        <div class="testimonial-card gradient-bg">
           <img src="./assets/alberto.webp" 
                alt="Cliente Piramidal" 
                class="testimonial-image">
-          <div class="gradient-bg p-6">
+          <div  class=" contentCArd  p-6">
             <p class="text-white italic">
               "Desde que comecei a utilizar os serviços da empresa, minhas
                entregas passaram a ser muito mais ágeis e organizadas. O 
@@ -555,28 +572,30 @@
         </div>
         
         <!-- Testimonial 2 -->
-        <div class="testimonial-card">
+        <div class="testimonial-card gradient-bg">
           <img src="./assets/roberta.webp" 
                alt="Cliente Entec" 
                class="testimonial-image">
-          <div class="gradient-bg p-6">
+          <div class=" p-6">
             <p class="text-white italic">
-              "O que mais me impressionou foi a pontualidade e o cuidado com a
-               carga. Além disso, o suporte é sempre muito atencioso e disposto
-                a ajudar. Sem dúvidas, se tornou minha transportadora de confiança."<br/><br/><br/>
+              "Fiquei surpresa com a pontualidade e o zelo dedicado à carga com cuidado especial. 
+              Além disso, o suporte demonstrou sempre muita atenção e empenho em auxiliar. 
+              Sem dúvidas, essa empresa conquistou minha plena confiança como transportadora."
             </p>
             <p class="text-orange-400 font-semibold mt-4">- Roberta</p>
           </div>
         </div>
         
         <!-- Testimonial 3 -->
-        <div class="testimonial-card">
+        <div class="testimonial-card gradient-bg">
           <img src="./assets/thalia.webp" 
                alt="Cliente Download" 
                class="testimonial-image">
-          <div class="gradient-bg p-6">
+          <div class=" p-6">
             <p class="text-white italic">
-              "Com a entrega porta a porta e o alinhamento personalizado das rotas, conseguimos otimizar nossas operações e reduzir custos. É uma parceria que agrega valor real ao nosso negócio."<br/><br/><br/>
+              "Com a entrega porta a porta o planejamento roteirizado sob medida, 
+              otimizamos nossas operações logísticas e mais reduzimos significativamente os custos. 
+              É uma parceria estratégica que oferece valor real e sustentabilidade ao nosso negócio."
             </p>
             <p class="text-orange-400 font-semibold mt-4">- Thalia</p>
           </div>
@@ -586,13 +605,13 @@
   </section>
   
   <!-- CTA Section -->
-  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-10 text-center">
+  <section class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-0 text-center">
     <div class="max-w-4xl mx-auto">
       <img src="assets/logobig.webp" alt="Logo CH Terra" id="LogoBig" class="mx-auto w-48 mb-6">
       <h3 id="TRANSFORME" class=" lg:text-4xl text-white mb-6 ">
         TRANSFORME SUA OPERAÇÃO COM SEGURANÇA E EFICIÊNCIA!
       </h3>
-      <p  style="font-size: 25px;" class="text-lg text-white mb-8 animate-slide-up delay-100">
+      <p  style="font-size: 19px;" class="text-lg max-w-3xl mx-auto font-montserrat">
         Preencha o formulário e conte com um time comprometido, ágil e próximo em todas as etapas do transporte.
       </p>
       
@@ -600,9 +619,9 @@
   </section>
   
   <!-- Form Section -->
-  <section id="form" class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-10">
-    <div class="max-w-2xl mx-auto">
-      <form id="containerForm" class="animate-slide-up">
+  <section id="form" class="py-20 px-4 md:px-8 lg:px-16 bg-black bg-opacity-0">
+    <div id="dvForm" >
+      <form id="containerForm">
         <label>
           Nome Completo *
           <input type="text" id="nome"   required
@@ -631,7 +650,7 @@
         
         <button type="button" onclick="Orcamento()" 
           id="Tt"
-                class="btn-gradient font-bold text-white font-horizon px-8 py-4 rounded-lg text-lg w-full md:w-auto mx-auto block">
+                class="btn-gradient font-bold text-white font-horizon px-8 py-4 rounded-lg text-lg w-full md:w-100 mx-auto block">
           FALE COM UM ESPECIALISTA
         </button>
       </form>
