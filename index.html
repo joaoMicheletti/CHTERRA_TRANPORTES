@@ -324,64 +324,127 @@
         margin-left: 5%;
       }
     }
-    .selector{
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        justify-content: center;
-        margin-bottom: 40px;
-        text-align: start;
-    }
-    .selector .card {
-      display: flex;
-      flex-direction: column;
-      height: 350px;
-      width: 300px;
-      background-color: #232323; /* cor do bg */
-      border-radius: 10px;
-      box-shadow: -1rem 0 1rem rgba(8, 8, 8, 0.4); /* cor da sombra */
-      transition: 0.4s ease-out;
-      position: relative;
-      left: 0px;
-    }
+    /* Base */
+.selector{
+  display:flex;
+  gap: 16px;            /* ajuda no desktop quando não usa sobreposição */
+  justify-content:center;
+  align-items:stretch;
+  width:100%;
+  margin-bottom:40px;
+  text-align:start;
+  overflow:visible;
+}
 
-    .selector .card:not(:first-child) {
-      margin-left: -50px;
-    }
+/* Cards fluidos */
+.selector .card{
+  display:flex;
+  flex-direction:column;
+  height: clamp(280px, 45vw, 350px);
+  width: clamp(220px, 28vw, 300px);
+  border-radius:10px;
+  box-shadow:-1rem 0 1rem rgba(8,8,8,.4);
+  transition: transform .4s ease-out;
+  position:relative;
+  left:0;
+}
 
-    .selector .card:hover {
-      transform: translateY(-20px);
-      transition: 0.4s ease-out;
-    }
+/* efeito “stack” (sobreposição) só no desktop */
+.selector .card:not(:first-child){
+  margin-left:-50px;
+}
 
-    .selector .card:hover ~ .card {
-      position: relative;
-      left: 50px;
-      transition: 0.4s ease-out;
-    }
+/* Hover apenas em dispositivos com mouse */
+@media (hover: hover) and (pointer: fine){
+  .selector .card:hover{
+    transform: translateY(-20px);
+  }
+  .selector .card:hover ~ .card{
+    position:relative;
+    left:50px;
+  }
+}
 
-    .selector .title {
-      position: absolute;
-      font-size: 20px;
-      font-weight: 600;
-      left: 10px;
-      top: 20px;
-      color: white;
-      font-family: Arial, sans-serif;
-    }
-    .IMGCARD{
-      margin-top: 100px;
-      height: 150px;
-      margin-left: 5%;
-      width: 90%;
-      border-radius: 10px;
-      margin-bottom: 30px;
-    }
-    .seta {
-      margin-left: 30%;
-      width: 40%;
-      margin-bottom: 30px;
-    }
+/* Conteúdos internos */
+.selector .title{
+  position:absolute;
+  font-size: clamp(16px, 2.5vw, 20px);
+  font-weight:600;
+  left:10px; top:20px;
+  color:#fff;
+  font-family:Arial, sans-serif;
+}
+
+.IMGCARD{
+  margin-top:100px;
+  height:150px;
+  width:90%;
+  margin-left:5%;
+  border-radius:10px;
+  margin-bottom:30px;
+  object-fit:cover;             /* garante corte bonito */
+  aspect-ratio: 16 / 9;         /* ajuda na responsividade */
+}
+
+.seta{
+  width:min(40%, 260px);
+  margin: 0 auto 30px;          /* centraliza e controla margem */
+  display:block;
+}
+
+/* ====== BREAKPOINTS ====== */
+
+/* <= 1100px: diminui sobreposição para não quebrar */
+@media (max-width: 1100px){
+  .selector .card:not(:first-child){
+    margin-left:-30px;
+  }
+}
+
+/* <= 900px: troca para grid de 2 colunas, remove sobreposição */
+@media (max-width: 900px){
+  .selector{
+    display:grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .selector .card{
+    width: 100%;
+    height: clamp(260px, 50vw, 320px);
+  }
+  .selector .card:not(:first-child){
+    margin-left:0;        /* sem sobreposição no mobile/tablet */
+  }
+}
+
+/* <= 600px: 1 coluna empilhada */
+@media (max-width: 600px){
+  .selector{
+    grid-template-columns: 1fr;
+    margin-bottom: 100px;
+  }
+  .selector .card{
+    width:100%;
+    height: clamp(240px, 55vw, 300px);
+  }
+  .IMGCARD{
+    margin-top: 72px;
+    height: auto;
+    width: 100%;
+    margin-left: 0;
+  }
+  .seta{
+    display: none;
+  }
+}
+
+/* Acessibilidade: reduz movimento se preferido pelo usuário */
+@media (prefers-reduced-motion: reduce){
+  .selector .card{
+    transition: none;
+  }
+}
+
   </style>
 </head>
 <body>
